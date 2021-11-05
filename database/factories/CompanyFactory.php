@@ -20,13 +20,4 @@ class CompanyFactory extends Factory
             'address' => $this->faker->address(),
         ];
     }
-
-    public function manager()
-    {
-        return $this->state(function (array $attributes) {
-            return [
-                'manager_id' => $attributes['id'],
-            ];
-        });
-    }
 }
