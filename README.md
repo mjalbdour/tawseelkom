@@ -5,6 +5,7 @@
 ###Consists of:
 * User (sender, manager, admin)
 * Company
+* Vehicle
 * Order
 
 
