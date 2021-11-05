@@ -1,0 +1,110 @@
+App entities:
+
+User: order sender, companymanager, superadmin
+
+Company
+
+Vehicle
+
+Order
+
+
+
+normal scenario:
+
+Seller searches for vehicle based size, then selects the from & to destination locations, gets the result page, when he picks the vehicle, selects shipping date & time.
+
+
+
+Company manager:
+
+crud vehicles & controls orders.
+
+
+
+sender:
+
+search for vehicle, create orders, update orders, delete orders before its too late. sees his orders.
+
+
+
+superadmin:
+
+monitor, crud anything, fix anything by call.
+
+
+
+User Model:
+
+name
+
+address
+
+email
+
+phone number
+
+password
+
+role
+
+
+
+Company Model:
+
+name
+
+email
+
+phonenumber
+
+address
+
+manager_id
+
+
+
+Vehicle:
+
+company_id
+
+name
+
+price_in_amman
+
+price_outside_amman
+
+
+
+Order:
+
+order_sender_id
+
+company_id
+
+vehicle_id
+
+from_location
+
+to_location
+
+inside_amman (boolean)
+
+date
+
+time
+
+sender_price
+
+delivery_price
+
+delivered (boolean)
+
+canceled (boolean)
+
+description
+
+created_at
+
+updated_at
+

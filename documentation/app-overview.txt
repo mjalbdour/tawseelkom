@@ -1,0 +1,47 @@
+home
+login/logout
+orders --> new order/ past orders
+results page --> select from results
+about page
+contact page
+
+
+public class Order
+{
+	public int Id;
+	public int CustomerId;
+	public string cartype;
+	public int Distance;
+	public DateTime date;
+	public string note;
+}
+
+SELECT * FROM COMPANIES
+WHERE cartype like 'small'
+
+
+ArrayList<Company> companies = new ArrayList<Company>();
+foreach(var row in sqlResult)
+{
+	
+	companies.Add(new Company(row.Id, row.name, ));	
+
+}
+
+
+foreach(var company in companies)
+{
+	
+	<tr>
+		<td>@comapny.Name</td>
+		<td>@{comapny.PricePerKm * Distance} Jod</td>
+	</tr>
+
+}
+
+
+**form
+distance
+catype
+date for delivery service
+note about request
