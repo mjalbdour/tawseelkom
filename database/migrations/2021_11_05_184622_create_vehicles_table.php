@@ -16,10 +16,13 @@ class CreateVehiclesTable extends Migration
         Schema::create('vehicles', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->enum('size', array_values(config('constants.vehicle_sizes')));
+            $table->enum('size', array_keys(config('constants.vehicle_sizes')))
+                ->index();
             $table->unsignedFloat('price_in_amman');
             $table->unsignedFloat('price_outside_amman');
-            $table->unsignedBigInteger('company_id');
+            $table->unsignedBigInteger('company_id')
+                ->index();
+            $table->boolean('available');
             $table->timestamps();
             $table->foreign('company_id')
                 ->references('id')
