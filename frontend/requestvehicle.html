@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <title>TAWSEELKOM</title>
+</head>
+<body>
+
+<section id="nav-bar">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="#">Tawseelkom</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      <i class="fa fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Account</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Orders</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</section>
+
+<!--banner section-->
+<section class="banner">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-6" id="desc">
+        <h4>please select a vehicle type depending
+          on your cargo, and specify from and to, because
+          price might vary depending on which city, you choose</h4>
+      </div>
+      <div class="col-md-6"><img src="img/box.png" id="box-search"></div>
+
+    </div>
+  </div>
+</section>
+<!--Order section-->
+<section class="order">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <img src="img/searching.png" id="vehicle-type">
+        <h2 class="title text-center">VEHICLE TYPE</h2>
+        <form action="requestvehicle.html" method="get">
+        <div class="dropdowntype">
+          <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenutype" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            SMALL
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" >Small</a>
+            <a class="dropdown-item" >Medium</a>
+            <a class="dropdown-item" >Large</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <img src="img/truck.png" id="from-location">
+        <h2 class="from">FROM</h2>
+
+          <div class="dropdownfrom">
+            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenufrom" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              AMMAN
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#">Irbid</a>
+              <a class="dropdown-item" href="#">Zarqa</a>
+              <a class="dropdown-item" href="#">Salt</a>
+              <a class="dropdown-item" href="#">Jerash</a>
+              <a class="dropdown-item" href="#">Ajloun</a>
+              <a class="dropdown-item" href="#">Aqaba</a>
+              <a class="dropdown-item" href="#">Ma'an</a>
+              <a class="dropdown-item" href="#">Madaba</a>
+              <a class="dropdown-item" href="#">Sahab</a>
+            </div>
+          </div>
+
+      </div>
+      <div class="col-md-4">
+        <img src="img/location.png" id="to-location">
+        <h2 class="from">TO</h2>
+
+          <div class="dropdownto">
+            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuto" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              AJLOUN
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#">Irbid</a>
+              <a class="dropdown-item" href="#">Zarqa</a>
+              <a class="dropdown-item" href="#">Salt</a>
+              <a class="dropdown-item" href="#">Jerash</a>
+              <a class="dropdown-item" href="#">Ajloun</a>
+              <a class="dropdown-item" href="#">Aqaba</a>
+              <a class="dropdown-item" href="#">Ma'an</a>
+              <a class="dropdown-item" href="#">Madaba</a>
+              <a class="dropdown-item" href="#">Sahab</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <img src="img/search.png" id="search-button">
+      <button class="btn btn-light btn-lg btn-block request-button" href="result.html">FIND VEHICLE</button>
+    </div>
+  </div>
+</section>
+<!--CANCEL-->
+<section class="cancel">
+<div class="container">
+    <div class="row-cancel-claimer">
+      <img src="img/cancel.png" id="cancel-box">
+      <h2>CANCELLATION</h2>
+    </div>
+    <div class="row-cancel">
+    <p>if you want to cancel any order, it is preferred
+      to be canceled 1 or 2 days before</p>
+    </div>
+  <hr>
+  <p class="copyright">All Rights Reserved</p>
+  </div>
+</section>
+</body>
+</html>
