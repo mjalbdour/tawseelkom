@@ -26,7 +26,7 @@
         <span>Dashboard</span></a>
     </li>
     <li>
-      <a href="userspage.html"><span class="las la-users"></span>
+      <a class="active" href="userspage.html"><span class="las la-users"></span>
         <span>Users</span></a>
     </li>
     <li>
@@ -38,7 +38,7 @@
         <span>Orders</span></a>
     </li>
     <li>
-      <a class="active" href="createcompany"><span class="las la-receipt"></span>
+      <a  href="createcompany"><span class="las la-receipt"></span>
         <span>Companies</span></a>
     </li>
 
@@ -67,58 +67,44 @@
     </div>
   </header>
   <main>
-    <form>
-      <section class="add-company">
-        <form>
-          <div class="form-row">
-            <div class="col-md-4 mb-3">
-              <label for="validationDefault01">Company name</label>
-              <input type="text" class="form-control" id="validationDefault01" placeholder="Company" required>
-            </div>
-            <div class="col-md-4 mb-3">
-              <label for="validationDefault02">Company Manager</label>
-              <input type="text" class="form-control" id="validationDefault02" placeholder="Manager"  required>
-            </div>
-            <div class="col-md-4 mb-3">
-              <label for="validationDefaultUsername">Username</label>
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="inputGroupPrepend2">@</span>
-                </div>
-                <input type="text" class="form-control" id="validationDefaultUsername" placeholder="Username" aria-describedby="inputGroupPrepend2" required>
-              </div>
-            </div>
-          </div>
-          <div class="form-row">
-
-            <div class="col-md-6 mb-3">
-              <label for="validationDefault03">City</label>
-              <input type="text" class="form-control" id="validationDefault03" placeholder="City" required>
-            </div>
-
-            <div class="col-md-3 mb-3">
-              <label for="validationDefault04">Phone Number</label>
-              <input type="text" class="form-control" id="validationDefault04" placeholder="07" required>
-            </div>
-
-          </div>
-          <div class="form-group">
-
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
-              <label class="form-check-label" for="invalidCheck2">
-                Agree to terms and conditions
-              </label>
-            </div>
-
-          </div>
-          <div class="row" id="submit-button">
-            <button class="btn btn-danger" type="submit">Add Company</button class="btn btn-danger" >
-          </div>
-
-        </form>
-      </section>
-    </form>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Address</th>
+        <th scope="col">E-mail</th>
+        <th scope="col">Phone Number</th>
+        <th scope="col">Password</th>
+        <th scope="col">Role</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Ahmad</td>
+        <td>Amman</td>
+        <td>ahmad@yahoo.com</td>
+        <td>07777777</td>
+        <td>Seller</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Essa</td>
+        <td>Zarqa</td>
+        <td>esse@yahoo.com</td>
+        <td>0777777799</td>
+        <td>Moderator</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Faris</td>
+        <td>Salt</td>
+        <td>Faris@yahoo.com</td>
+        <td>077777888</td>
+        <td>Company Manager</td>
+      </tr>
+      </tbody>
+    </table>
   </main>
 </div>
 
