@@ -28,7 +28,7 @@ class VehicleController extends Controller
     public function create()
     {
         // user must be of role superadmin
-        return view('compnies.create');
+        return view('companies.create');
     }
 
     /**
@@ -59,10 +59,10 @@ class VehicleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\Vehicle $Vehicle
+     * @param \App\Models\Vehicle $vehicle
      * @return \Illuminate\Http\Response
      */
-    public function show(Vehicle $Vehicle)
+    public function show(Vehicle $vehicle)
     {
         return view('vehicles.show', compact('Vehicle'));
     }
@@ -70,10 +70,10 @@ class VehicleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Models\Vehicle $Vehicle
+     * @param \App\Models\Vehicle $vehicle
      * @return \Illuminate\Http\Response
      */
-    public function edit(Vehicle $Vehicle)
+    public function edit(Vehicle $vehicle)
     {
         return view('vehicles.edit', compact('Vehicle'));
     }
@@ -82,10 +82,10 @@ class VehicleController extends Controller
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Vehicle $Vehicle
+     * @param \App\Models\Vehicle $vehicle
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Vehicle $Vehicle)
+    public function update(Request $request, Vehicle $vehicle)
     {
         $validation = Validator::make($request->all(), [
             'name' => 'required',
@@ -98,7 +98,7 @@ class VehicleController extends Controller
             return redirect()->back()->with($validation->getMessageBag());
         }
 
-        $Vehicle->fill($request->all())->save();
+        $vehicle->fill($request->all())->save();
 
         return redirect('vehicles.show', compact('Vehicle'));
     }
@@ -106,12 +106,12 @@ class VehicleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\Vehicle $Vehicle
+     * @param \App\Models\Vehicle $vehicle
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Vehicle $Vehicle)
+    public function destroy(Vehicle $vehicle)
     {
-        $Vehicle->delete();
+        $vehicle->delete();
         return redirect('vehicles.index');
     }
 }
