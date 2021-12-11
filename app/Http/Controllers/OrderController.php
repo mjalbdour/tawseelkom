@@ -46,9 +46,6 @@ class OrderController extends Controller
             'datetime' => 'required',
             'sender_price' => 'required',
             'delivery_price' => 'required',
-            'delivered' => 'required',
-            'approved' => 'required',
-            'canceled' => 'required',
             'description' => 'required',
         ]);
         if ($validation->fails()) {
@@ -110,7 +107,7 @@ class OrderController extends Controller
 
         $order->fill($request->all())->save();
 
-        return redirect('orders.show', compact('company'));
+        return redirect('orders.show', compact('order'));
     }
 
     /**
