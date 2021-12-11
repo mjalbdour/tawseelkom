@@ -9,4 +9,7 @@
 * Order
 
 
-documentation to be continued...
+#### Creating a *Super-admin*
+```SQL
+insert into users (name, email, password, phone_number, address, role) values ('<name>', '<email>', '<password>', '<phone_number>', '<address>', 'super-admin');
+```
