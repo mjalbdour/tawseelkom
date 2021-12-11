@@ -28,7 +28,7 @@ class CompanyController extends Controller
     public function create()
     {
         // user must be of role superadmin
-        return view('compnies.create');
+        return view('companies.create');
     }
 
     /**
