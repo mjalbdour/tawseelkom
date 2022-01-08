@@ -64,7 +64,7 @@ class VehicleController extends Controller
      */
     public function show(Vehicle $vehicle)
     {
-        return view('vehicles.show', compact('Vehicle'));
+        return view('vehicles.show', compact('vehicle'));
     }
 
     /**
@@ -75,7 +75,7 @@ class VehicleController extends Controller
      */
     public function edit(Vehicle $vehicle)
     {
-        return view('vehicles.edit', compact('Vehicle'));
+        return view('vehicles.edit', compact('vehicle'));
     }
 
     /**
@@ -100,7 +100,7 @@ class VehicleController extends Controller
 
         $vehicle->fill($request->all())->save();
 
-        return redirect('vehicles.show', compact('Vehicle'));
+        return redirect('vehicles.show', compact('vehicle'));
     }
 
     /**
@@ -113,5 +113,17 @@ class VehicleController extends Controller
     {
         $vehicle->delete();
         return redirect('vehicles.index');
+    }
+
+    public function search()
+    {
+        return view('vehicles.search');
+    }
+
+    public function results()
+    {
+        // get list based on filters
+        $vehicles = Vehicle::where()->get();
+        return view('vehicles.results', compact('vehicles'));
     }
 }
