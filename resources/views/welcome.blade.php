@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" >
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -17,23 +17,7 @@
 </head>
 <body>
 
-<section id="nav-bar">
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="#">Tawseelkom</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            <i class="fa fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{url('login')}}">Login</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-</section>
+@include('includes.nav')
 
 <!--Banner Section-->
 
@@ -42,7 +26,7 @@
         <div class="row">
             <div class="col-md-6">
                 <p class="promo">Tawseelkom</p>
-                <a href="requestvehicle.html" class="order-btn">Request Vehicle</a>
+                <a href="{{url('vehicles.search')}}" class="order-btn">Request Vehicle</a>
                 <p>Ship all items from all sizes</p>
             </div>
             <div class="col-md-6 text-center">
@@ -75,25 +59,6 @@
         </div>
     </div>
 </section>
-<!--footer section-->
-<section class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 footer-box">
-                <h3>Tawseelkom</h3>
-                <p>this is a senior project by abdelrahman abutina
-                    inshallah i will pass good and get good grades</p>
-            </div>
-            <div class="col-md-4 footer-box">
-                <p><b>CONTACT US</b></p>
-                <p><i class="fas fa-map-marker-alt"></i>MADABA,JORDAN</p>
-                <p><i class="fas fa-phone"></i>0779094043</p>
-                <p><i class="fas fa-envelope-open"></i>A.ABUTINA@GJU.EDU.JO</p>
-            </div>
-        </div>
-        <hr>
-        <p class="copyright">All Rights Reserved</p>
-    </div>
-</section>
+@include('includes.footer')
 </body>
 </html>
