@@ -22,10 +22,8 @@ class CreateOrdersTable extends Migration
             $table->dateTime('datetime');
             $table->unsignedFloat('sender_price');
             $table->unsignedFloat('delivery_price');
-            $table->boolean('approved');
-            $table->boolean('delivered');
-            $table->boolean('canceled')->nullable(true);
-            $table->text('description');
+            $table->boolean('delivered')->default(false);
+            $table->text('description')->nullable();
             $table->timestamps();
             $table->foreign('sender_id')
                 ->references('id')

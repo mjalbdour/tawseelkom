@@ -22,11 +22,12 @@ class CreateVehiclesTable extends Migration
             $table->unsignedFloat('price_outside_amman');
             $table->unsignedBigInteger('company_id')
                 ->index();
-            $table->boolean('available');
+            $table->boolean('available')->default(true);
             $table->timestamps();
             $table->foreign('company_id')
                 ->references('id')
-                ->on('companies');
+                ->on('companies')
+            ->onDelete('cascade');
         });
     }
 

@@ -26,7 +26,10 @@
         <div class="row">
             <div class="col-md-6">
                 <p class="promo">Tawseelkom</p>
-                <a href="{{url('vehicles.search')}}" class="order-btn">Request Vehicle</a>
+                <i>A B2C/B2B service that provides a flexible, safe and fast delivery of small, medium and large items inside Jordan.</i>
+                <button class="btn btn-info d-block mt-2">
+                    <a href="{{route('vehicles.index')}}">Request Vehicle</a>
+                </button>
                 <p>Ship all items from all sizes</p>
             </div>
             <div class="col-md-6 text-center">
@@ -39,24 +42,34 @@
 <!--Services Section-->
 <section id="services">
     <div class="container text-center">
-        <h1 class="title">WHAT WE DO</h1>
+        <h1 class="title">What we do</h1>
         <div class="row text-center">
             <div class="col-md-4 services">
                 <img src="{{asset('img/delivery-man.png')}}" class="service-img">
-                <h4>Our Goal</h4>
-                <p>We pick your items in a fast and safe way very quickly</p>
+                <h4>Flexibility</h4>
+                <p>We offer 3 shipping sizes: small, medium and large.</p>
             </div>
             <div class="col-md-4 services">
                 <img src="{{asset('img/delivery.png')}}" class="service-img">
-                <h4>Our Goal</h4>
-                <p>We pick your items in a fast and safe way very quickly</p>
+                <h4>Safety</h4>
+                <p>We make sure items are picked up and delivered safely.</p>
             </div>
             <div class="col-md-4 services">
                 <img src="{{asset('img/fast-delivery.png')}}" class="service-img">
-                <h4>Our Goal</h4>
-                <p>We pick your items in a fast and safe way very quickly</p>
+                <h4>Speed</h4>
+                <p>We offer the fastest delivery inside and outside Amman.</p>
             </div>
         </div>
+    </div>
+</section>
+
+<section>
+    <div class="container text-center mb-4">
+        <h3 class="fst-italic">Register now to use our services</h3>
+        <button class="btn btn-link">
+            <a href="{{url("register")}}">Register</a>
+        </button>
+        <h5 class="fst-italic">Or call to administrator to set up company</h5>
     </div>
 </section>
 @include('includes.footer')

@@ -10,7 +10,7 @@ class Order extends Model
     use HasFactory;
 
     protected $fillable = [
-        'order_sender_id',
+        'sender_id',
         'company_id',
         'vehicle_id',
         'inside_amman',
@@ -23,5 +23,18 @@ class Order extends Model
         'description',
     ];
 
+    public function sender()
+    {
+        return $this->belongsTo(User::class,"sender_id");
+    }
 
+    public function company()
+    {
+        return $this->belongsTo(Company::class, "company_id");
+    }
+
+    public function vehicle()
+    {
+        return $this->hasOne(Vehicle::class, "id", "vehicle_id");
+    }
 }

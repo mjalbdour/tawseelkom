@@ -3,89 +3,80 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Vehicle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class OrderController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    private function prepareOrders()
+    {
+        if (auth()->user()->role == 'manager') {
+            return Order::with("company", "sender", "vehicle")
+                ->where('company_id', auth()->user()->company->id)
+                ->orderBy("updated_at", "desc");
+        } else if (auth()->user()->role == 'customer') {
+            return Order::with("company", "sender", "vehicle")
+                ->where('sender_id', "=", auth()->user()->id)
+                ->orderBy("updated_at", "desc");
+        } else {
+            return Order::with("company", "sender", "vehicle")
+                ->orderBy("updated_at", "desc");
+        }
+    }
+
     public function index()
     {
-        $orders = Order::all();
-        return view("vehicles.index", compact('orders'));
-
+        $orders = $this->prepareOrders()->get();
+        return view("orders.index", compact('orders'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function create(Request $request)
     {
-        return view('orders.create');
+        $vehicle = Vehicle::where('id', $request->query("id"))
+            ->with('company')
+            ->firstOrFail();
+
+        return view('orders.create', compact("vehicle"));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        $validation = Validator::make($request->all(), [
-            'order_sender_id' => 'required',
-            'company_id' => 'required',
-            'vehicle_id' => 'required',
-            'inside_amman' => 'required',
-            'datetime' => 'required',
-            'sender_price' => 'required',
-            'delivery_price' => 'required',
-            'description' => 'required',
-        ]);
-        if ($validation->fails()) {
-            return redirect()->back()->with($validation->getMessageBag());
-        }
+        $vehicle = Vehicle::find($request->vehicle_id);
 
-        Order::create($request->all());
+//        $deliveryPrice = 0.0;
+//        if($request->inside_amman) {
+//            $deliveryPrice =  $vehicle->price_in_amman
+//        } else {
+//            $deliveryPrice =  $vehicle->price_outside_amman
+//        }
 
-        return redirect('orders.index');
+        $deliveryPrice = $request->inside_amman ? $vehicle->price_in_amman : $vehicle->price_outside_amman;
+
+        $order_data = [
+            "sender_id" => auth()->user()->id,
+            "vehicle_id" => $request->vehicle_id,
+            "delivery_price" => $deliveryPrice,
+            "company_id" => $vehicle->company_id,
+            "inside_amman" => $request->inside_amman == "on",
+            "datetime" => $request->datetime,
+            "description" => $request->description,
+            "sender_price" => $request->sender_price
+        ];
+
+        Order::create($order_data);
+
+        return redirect("orders");
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param \App\Models\Order $order
-     * @return \Illuminate\Http\Response
-     */
     public function show(Order $order)
     {
+        $order = Order::where("id", $order->id)
+            ->with("company", "sender", "vehicle")
+            ->get();
         return view('orders.show', compact('order'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param \App\Models\Order $order
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Order $order)
-    {
-        return view('orders.edit', compact('order'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Order $order
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Order $order)
     {
         $validation = Validator::make($request->all(), [
@@ -97,10 +88,9 @@ class OrderController extends Controller
             'sender_price' => 'required',
             'delivery_price' => 'required',
             'delivered' => 'required',
-            'approved' => 'required',
-            'canceled' => 'required',
             'description' => 'required',
         ]);
+
         if ($validation->fails()) {
             return redirect()->back()->with($validation->getMessageBag());
         }
@@ -110,15 +100,25 @@ class OrderController extends Controller
         return redirect('orders.show', compact('order'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param \App\Models\Order $order
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Order $order)
     {
         $order->delete();
         return redirect('orders.index');
+    }
+
+    public function results(Request $request)
+    {
+        if ($request->query("id") == null) {
+            return redirect('orders');
+        }
+        $orders = Order::where("id", $request->id)->get();
+        return view('orders.index', compact('orders'));
+    }
+
+    public function deliver(Order $order)
+    {
+        $order->delivered = true;
+        $order->save();
+        return redirect('orders');
     }
 }

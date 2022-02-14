@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Company;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class VehicleFactory extends Factory
@@ -13,9 +14,11 @@ class VehicleFactory extends Factory
      */
     public function definition()
     {
+        $this->faker->addProvider(new \Faker\Provider\Fakecar($this->faker));
         return [
-            'name' => $this->faker->name(),
-            'size' => $this->faker->randomElement(array_values(config('constants.vehicle_sizes'))),
+            'company_id' => Company::factory()->create()->id,
+            'name' => $this->faker->vehicle,
+            'size' => $this->faker->randomElement(array_keys(config('constants.vehicle_sizes'))),
             'price_in_amman' => $this->faker->randomFloat(3, 1, 9),
             'price_outside_amman' => $this->faker->randomFloat(3, 2, 9)
         ];
@@ -24,7 +27,7 @@ class VehicleFactory extends Factory
     public function small()
     {
         return $this->state(function ($attributes) {
-            $size = array_values(config('constants.vehicle_sizes'))[0];
+            $size = array_keys(config('constants.vehicle_sizes'))[0];
             return [
                 'size' => $size,
             ];
@@ -34,7 +37,7 @@ class VehicleFactory extends Factory
     public function medium()
     {
         return $this->state(function ($attributes) {
-            $size = array_values(config('constants.vehicle_sizes'))[1];
+            $size = array_keys(config('constants.vehicle_sizes'))[1];
             return [
                 'size' => $size,
             ];
@@ -44,7 +47,7 @@ class VehicleFactory extends Factory
     public function large()
     {
         return $this->state(function ($attributes) {
-            $size = array_values(config('constants.vehicle_sizes'))[2];
+            $size = array_keys(config('constants.vehicle_sizes'))[2];
             return [
                 'size' => $size,
             ];
