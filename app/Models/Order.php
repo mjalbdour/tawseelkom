@@ -18,8 +18,6 @@ class Order extends Model
         'sender_price',
         'delivery_price',
         'delivered',
-        'approved',
-        'canceled',
         'description',
     ];
 

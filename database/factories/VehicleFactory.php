@@ -19,8 +19,8 @@ class VehicleFactory extends Factory
             'company_id' => Company::factory()->create()->id,
             'name' => $this->faker->vehicle,
             'size' => $this->faker->randomElement(array_keys(config('constants.vehicle_sizes'))),
-            'price_in_amman' => $this->faker->randomFloat(3, 1, 9),
-            'price_outside_amman' => $this->faker->randomFloat(3, 2, 9)
+            'price_in_amman' => $this->faker->randomFloat(2, 1, 5),
+            'price_outside_amman' => $this->faker->randomFloat(2, 5, 9)
         ];
     }
 
